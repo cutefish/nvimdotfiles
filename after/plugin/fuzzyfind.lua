@@ -7,6 +7,7 @@ vim.keymap.set('n', '<leader>A', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>b', builtin.buffers, {})
 vim.keymap.set('n', '<leader>h', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>gc', builtin.git_commits, {})
+vim.keymap.set('n', '<leader>p', builtin.resume, {})
 
 telescope.setup {
   defaults = {

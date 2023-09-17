@@ -2,6 +2,8 @@
 -- Setup language servers.
 --------------------------------------------------------------------------------
 require('xy0.lsp.pyright').setup()
+require('xy0.lsp.bashls').setup()
+require('xy0.lsp.luals').setup()
 
 --------------------------------------------------------------------------------
 -- Global mappings.
