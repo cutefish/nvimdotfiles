@@ -1,3 +1,7 @@
+-- opening directory
+vim.g.xy0openingDirectory = vim.loop.cwd()
+print("Opening from " .. vim.g.xy0openingDirectory)
+
 -- leader key
 vim.g.mapleader = ","
 
