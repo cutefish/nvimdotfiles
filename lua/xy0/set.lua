@@ -24,5 +24,3 @@ vim.opt.termguicolors = true
 -- blink cursor
 vim.opt.guicursor="a:blinkwait1-blinkon100"
 
--- mark line width 80
-vim.opt.colorcolumn = "80"
