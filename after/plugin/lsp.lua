@@ -2,17 +2,24 @@
 -- lspconfig
 --------------------------------------------------------------------------------
 -- Setup language servers.
+local root_files = {
+    'README.md',
+    '.git',
+}
 local lspconfig = require('lspconfig')
 lspconfig.pyright.setup {
   cmd = { "pyright-langserver", "--stdio" },
   filetypes = { "python" },
   root_dir = function(filename, bufnr)
-    print('using root' .. vim.g.xy0openingDirectory)
-    return vim.g.xy0openingDirectory
+    local primary = lspconfig.util.root_pattern(unpack(root_files))(fname)
+    local root = primary or vim.g.xy0openingDirectory
+    print('lspconfig using root' .. root)
+    return root
   end,
 }
 
 -- Global mappings.
+local telescope_builtin = require('telescope.builtin')
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
@@ -43,7 +50,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
     vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', 'gr', telescope_builtin.lsp_references, opts)
     vim.keymap.set('n', '<space>f', function()
       vim.lsp.buf.format { async = true }
     end, opts)
