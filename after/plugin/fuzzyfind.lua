@@ -7,6 +7,8 @@ vim.keymap.set('n', '<leader>b', builtin.buffers, {})
 vim.keymap.set('n', '<leader>c', builtin.git_commits, {})
 vim.keymap.set('n', '<leader>g', builtin.git_files, {})
 vim.keymap.set('n', '<leader>p', builtin.resume, {})
+vim.keymap.set('n', '<leader>m', builtin.man_pages, {})
+vim.keymap.set('n', '<leader>/', builtin.search_history, {})
 
 telescope.setup {
   defaults = {
