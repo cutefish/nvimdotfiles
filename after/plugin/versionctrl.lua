@@ -1,0 +1,12 @@
+vim.api.nvim_create_user_command("Gl", "Git log", {})
+vim.api.nvim_create_user_command("Gst", "Git status", {})
+vim.api.nvim_create_user_command("Gd", "Git diff", {})
+vim.api.nvim_create_user_command("Gb", "Git blame", {})
+vim.api.nvim_create_user_command("Gup", function(arg)
+    vim.cmd("Git add . ")
+    vim.cmd('Git ci -m ' .. (arg.args or "update"))
+    vim.cmd('Git push')
+end, {})
+vim.api.nvim_create_user_command("Gdv", function(arg)
+    vim.cmd("Gvdiffsplit " .. arg.args) end, {})
+
