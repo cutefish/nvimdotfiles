@@ -1,3 +1,3 @@
 return {
-  {"vim-airline/vim-airline"},
+  {"nvim-lualine/lualine.nvim"},
 }
