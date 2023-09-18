@@ -1,6 +1,5 @@
 -- opening directory
 vim.g.xy0openingDirectory = vim.loop.cwd()
-print("Opening from " .. vim.g.xy0openingDirectory)
 
 -- leader key
 vim.g.mapleader = ","
@@ -16,7 +15,7 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.expandtab = true
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 2
+vim.opt.shiftwidth = 4
 
 -- search
 vim.opt.hlsearch = true
@@ -27,4 +26,3 @@ vim.opt.termguicolors = true
 
 -- blink cursor
 vim.opt.guicursor="a:blinkwait1-blinkon100"
-

@@ -4,6 +4,7 @@
 require('xy0.lsp.pyright').setup()
 require('xy0.lsp.bashls').setup()
 require('xy0.lsp.luals').setup()
+require('xy0.lsp.jdtls').setup()
 
 --------------------------------------------------------------------------------
 -- Global mappings.

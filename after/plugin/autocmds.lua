@@ -4,7 +4,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 })
 
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
-  pattern = { "*.java", "*.py" },
+  pattern = { "*.java", "*.py", "*.lua" },
   callback = function() vim.opt.colorcolumn = "80"  end,
 })
 
