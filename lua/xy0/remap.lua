@@ -50,12 +50,25 @@ vim.keymap.set("n", "<leader>t9", "9gt")
 vim.keymap.set("n", "<leader>t0", "10gt")
 
 --------------------------------------------------------------------------------
--- Move visual block
+-- Misc
 --------------------------------------------------------------------------------
+-- Move visual block
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-
---------------------------------------------------------------------------------
 -- New line in normal
---------------------------------------------------------------------------------
 vim.keymap.set("n", "<leader>n", "<Insert><cr><esc>")
+-- Delete the buffer without losing split
+vim.api.nvim_create_user_command("Bd", "b#|bd#", {})
+-- Clear terminal as well as scrollback
+local function clear_term()
+    print('clear term')
+    vim.opt_local.scrollback = 1
+    vim.api.nvim_command("startinsert")
+    vim.api.nvim_feedkeys("clear", 't', false)
+    vim.api.nvim_feedkeys(
+        vim.api.nvim_replace_termcodes('<cr>', true, false, true), 't', true)
+    vim.opt_local.scrollback = 10000
+end
+vim.keymap.set('t', '<c-l><c-l>', clear_term)
+
+

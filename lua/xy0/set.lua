@@ -1,5 +1,7 @@
+local util = require('xy0.util')
+
 -- opening directory
-vim.g.xy0openingDirectory = vim.loop.cwd()
+util.set_opening_directory()
 
 -- leader key
 vim.g.mapleader = ","

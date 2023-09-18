@@ -1,5 +1,5 @@
 local M = {}
-local util = require("xy0.lsp.util")
+local util = require("xy0.util")
 local lspconfig = require('lspconfig')
 function M.setup()
   lspconfig.bashls.setup({

@@ -1,5 +1,5 @@
 local M = {}
-local util = require("xy0.lsp.util")
+local util = require("xy0.util")
 local install_dir = '/scratch/install/jdtls/'
 local config_dir = install_dir .. 'config_linux'
 local workspace_dir = '/scratch/data/jdtls/ws/' .. util.get_project_name()
