@@ -11,7 +11,15 @@ end
 
 local luasnip = require("luasnip")
 local cmp = require("cmp")
-
+local safe_enter = function(fallback)
+    -- If nothing is selected (including preselections) add a newline as usual.
+    -- If something has explicitly been selected by the user, select it.
+    if cmp.visible() and cmp.get_active_entry() then
+        cmp.confirm({behavior = cmp.ConfirmBehavior.Replace, select = false })
+    else
+        fallback()
+    end
+end
 cmp.setup({
     snippet = {
         expand = function(args)
@@ -29,49 +37,35 @@ cmp.setup({
         ['<c-e>'] = cmp.mapping.abort(),
         ['<c-p>'] = cmp.mapping.select_next_item(),
         ['<c-n>'] = cmp.mapping.select_prev_item(),
-
-        -- If nothing is selected (including preselections) add a newline as usual.
-        -- If something has explicitly been selected by the user, select it.
         ["<CR>"] = cmp.mapping({
-            i = function(fallback)
-                if cmp.visible() and cmp.get_active_entry() then
-                    cmp.confirm({
-                        behavior = cmp.ConfirmBehavior.Replace, select = false })
-                    else
-                        fallback()
-                    end
-                end,
-                s = cmp.mapping.confirm({ select = true }),
-                c = cmp.mapping.confirm({
-                    behavior = cmp.ConfirmBehavior.Replace, select = true }),
-                }),
-
-                ["<Tab>"] = cmp.mapping(function(fallback)
-                    print('hitting tab')
-                    if cmp.visible() then
-                        cmp.select_next_item()
-                    elseif luasnip.expand_or_jumpable() then
-                        -- You could replace the expand_or_jumpable() calls
-                        -- with expand_or_locally_jumpable()
-                        -- this way you will only jump
-                        -- inside the snippet region
-                        luasnip.expand_or_jump()
-                    elseif has_words_before() then
-                        cmp.complete()
-                    else
-                        fallback()
-                    end
-                end, { "i", "s" }),
-
-                ["<S-Tab>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.select_prev_item()
-                    elseif luasnip.jumpable(-1) then
-                        luasnip.jump(-1)
-                    else
-                        fallback()
-                    end
-                end, { "i", "s" }),
+            i = safe_enter,
+            s = cmp.mapping.confirm({ select = true }),
+            c = safe_enter,
+        }),
+        ["<Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+            elseif luasnip.expand_or_jumpable() then
+                -- You could replace the expand_or_jumpable() calls
+                -- with expand_or_locally_jumpable()
+                -- this way you will only jump
+                -- inside the snippet region
+                luasnip.expand_or_jump()
+            elseif has_words_before() then
+                cmp.complete()
+            else
+                fallback()
+            end
+        end, { "i", "s" }),
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_prev_item()
+            elseif luasnip.jumpable(-1) then
+                luasnip.jump(-1)
+            else
+                fallback()
+            end
+        end, { "i", "s" }),
     },
 
     sources = cmp.config.sources({
