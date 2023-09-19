@@ -22,9 +22,7 @@ local function get_lsp_message()
             contents = msg.title
             if msg.message then contents = contents .. ' ' .. msg.message end
             -- this percentage format string escapes a percent sign
-            -- once to show a percentage and one more
-            -- time to prevent errors in vim statusline's
-            -- because of it's treatment of % chars
+            -- once to show a percentage
             if msg.percentage then
                 contents = contents ..
                     string.format(" (%.0f%%)", msg.percentage)
@@ -54,6 +52,8 @@ local function get_lsp_message()
         table.insert(msgs, client_name .. ' ' .. contents)
     end
     local msg = table.concat(msgs, config.component_separator)
+    -- escape % chars to prevent errors in vim statusline's
+    -- because of it's treatment of % chars
     msg = string.gsub(msg, '%%', '%%%%')
     return msg
 end
