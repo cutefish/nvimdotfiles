@@ -8,7 +8,7 @@ function M.setup()
     cmd = { "pyright-langserver", "--stdio" },
     filetypes = { "python" },
     root_dir = util.get_root,
-    on_attach = lspstatus.on_attach,
+    on_attach = function() lspstatus.on_attach() end,
     capabilities = lsputil.get_capabilities(),
   })
 end

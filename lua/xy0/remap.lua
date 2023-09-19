@@ -61,7 +61,6 @@ vim.keymap.set("n", "<leader>n", "<Insert><cr><esc>")
 vim.api.nvim_create_user_command("Bd", "b#|bd#", {})
 -- Clear terminal as well as scrollback
 local function clear_term()
-    print('clear term')
     vim.opt_local.scrollback = 1
     vim.api.nvim_command("startinsert")
     vim.api.nvim_feedkeys("clear", 't', false)

@@ -1,6 +1,15 @@
 -- register lsp status
 local lspstatus = require('lsp-status')
 lspstatus.register_progress()
+lspstatus.config {
+    current_function = true,
+    indicator_errors = 'E',
+    indicator_warnings = 'W',
+    indicator_info = 'I',
+    indicator_hint = 'H',
+    indicator_ok = 'O',
+    status_symbol = 'S:',
+}
 
 -- setup language servers.
 require('xy0.lsp.pyright').setup()

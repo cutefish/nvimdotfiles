@@ -1,7 +1,8 @@
 local M = {}
 local util = require("xy0.util")
+local lsputil = require("xy0.lsp.util")
 local lspconfig = require('lspconfig')
-local cmp = require('cmp_nvim_lsp')
+local lspstatus = require('lsp-status')
 function M.setup()
     lspconfig.bashls.setup({
         cmd = { 'bash-language-server', 'start' },
@@ -20,7 +21,8 @@ function M.setup()
         filetypes = { 'sh' },
         root_dir = util.get_root,
         single_file_support = true,
-        capabilities = cmp.default_capabilities(),
+        on_attach = function() lspstatus.on_attach() end,
+        capabilities = lsputil.get_capabilities(),
     })
 end
 return M

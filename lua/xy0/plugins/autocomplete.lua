@@ -7,5 +7,4 @@ return {
     {"hrsh7th/cmp-cmdline"},
     {"hrsh7th/nvim-cmp"},
     {"windwp/nvim-autopairs"},
-    {"NMAC427/guess-indent.nvim"},
 }
