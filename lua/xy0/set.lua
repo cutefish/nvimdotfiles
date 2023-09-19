@@ -27,5 +27,7 @@ vim.opt.incsearch = true
 vim.opt.termguicolors = true
 
 -- blink cursor
-vim.opt.guicursor="a:blinkwait1-blinkon100"
+vim.opt.guicursor = "a:blinkwait1-blinkon100"
 
+-- disable mouse
+vim.opt.mouse = ""
