@@ -86,12 +86,12 @@ require('lualine').setup {
     },
     sections = {
         lualine_a = {'mode', },
-        lualine_b = {'buffers', 'branch', 'diff' },
+        lualine_b = {'branch', 'diff' },
         lualine_c = {
             'diagnostics',
             safe_get_lsp_message,
         },
-        lualine_x = {'encoding', 'fileformat', 'filetype'},
+        lualine_x = {'encoding', 'filetype'},
         lualine_y = {'progress', 'selectioncount'},
         lualine_z = {'location'}
     },
