@@ -3,12 +3,8 @@ local lspstatus = require('lsp-status')
 lspstatus.register_progress()
 lspstatus.config {
     current_function = true,
-    indicator_errors = 'E',
-    indicator_warnings = 'W',
-    indicator_info = 'I',
+    -- hint looks like warning, just use 'H'
     indicator_hint = 'H',
-    indicator_ok = 'O',
-    status_symbol = 'S:',
 }
 
 -- setup language servers.
