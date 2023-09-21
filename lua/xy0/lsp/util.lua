@@ -15,11 +15,11 @@ function M.on_attach(bufnr)
     end
     local opts = { noremap=true, silent=true }
     buf_set_keymap(
-        'n', '<space>o', telescope_builtin.diagnostics, opts)
+        'n', '<space>a', telescope_builtin.diagnostics, opts)
     buf_set_keymap(
-        'n', '<space>s', telescope_builtin.lsp_document_symbols, opts)
+        'n', '<space>o', telescope_builtin.lsp_document_symbols, opts)
     buf_set_keymap(
-        'n', '<space>w', telescope_builtin.lsp_dynamic_workspace_symbols, opts)
+        'n', '<space>s', telescope_builtin.lsp_dynamic_workspace_symbols, opts)
     buf_set_keymap(
         'n', '<space>rn', vim.lsp.buf.rename, opts)
     buf_set_keymap('n', 'gD', vim.lsp.buf.declaration, opts)
