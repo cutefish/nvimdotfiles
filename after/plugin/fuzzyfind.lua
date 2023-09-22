@@ -4,7 +4,7 @@ local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set(
     'n', '<leader>fG',
-    function() builtin.grep_string({ search=vim.fn.input('Grep >')}) end, {})
+    function() builtin.grep_string({ search=vim.fn.input('Grep: ')}) end, {})
 vim.keymap.set('n', '<leader>fw', builtin.grep_string, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fc', builtin.git_commits, {})

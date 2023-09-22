@@ -37,7 +37,7 @@ function M.on_attach(bufnr)
     buf_set_keymap(
         { 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
     buf_set_keymap(
-        'n', '<space>f',
+        { 'n', 'v' }, '<space>f',
         function() vim.lsp.buf.format { async = true } end, opts)
 end
 
