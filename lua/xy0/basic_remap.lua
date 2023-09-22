@@ -3,8 +3,8 @@
 --------------------------------------------------------------------------------
 vim.opt.splitright = true
 vim.opt.splitbelow = true
-vim.keymap.set("n", "<leader>vt", ":execute ':vsp term://bash'<CR>a")
-vim.keymap.set("n", "<leader>st", ":execute ':sp term://bash'<CR>a")
+vim.keymap.set("n", "<leader>tv", ":execute ':vsp term://bash'<CR>a")
+vim.keymap.set("n", "<leader>ts", ":execute ':sp term://bash'<CR>a")
 vim.keymap.set("n", "<leader>tt", ":execute ':tabnew term://bash'<CR>a")
 -- Exit terminal mode
 vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
@@ -56,7 +56,7 @@ vim.keymap.set("n", "<leader>t0", "10gt")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- New line in normal
-vim.keymap.set("n", "<leader>n", "<Insert><cr><esc>")
+vim.keymap.set("n", "<leader>r", "<Insert><cr><esc>")
 -- Delete the buffer without losing split
 vim.api.nvim_create_user_command("Bd", "b#|bd#", {})
 -- Clear terminal as well as scrollback
