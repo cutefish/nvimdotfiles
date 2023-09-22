@@ -1,4 +1,4 @@
 return {
-  {"easymotion/vim-easymotion"},
-  {"tpope/vim-surround"},
+    { "easymotion/vim-easymotion" },
+    { "tpope/vim-surround" },
 }

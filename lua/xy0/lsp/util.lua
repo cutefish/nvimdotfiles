@@ -13,7 +13,7 @@ function M.on_attach(bufnr)
         opts.buffer = bufnr
         vim.keymap.set(mode, lhs, rhs, opts)
     end
-    local opts = { noremap=true, silent=true }
+    local opts = { noremap = true, silent = true }
     buf_set_keymap(
         'n', '<space>a', telescope_builtin.diagnostics, opts)
     buf_set_keymap(
@@ -46,4 +46,5 @@ function M.get_capabilities()
         'keep', cmp.default_capabilities() or {},
         lspstatus.capabilities)
 end
+
 return M

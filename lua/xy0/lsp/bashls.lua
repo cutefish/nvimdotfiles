@@ -25,4 +25,5 @@ function M.setup()
         capabilities = lsputil.get_capabilities(),
     })
 end
+
 return M

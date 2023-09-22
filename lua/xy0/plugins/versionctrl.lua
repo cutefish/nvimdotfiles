@@ -1,4 +1,4 @@
 return {
-	{"tpope/vim-fugitive"},
-	{"sindrets/diffview.nvim"},
+    { "tpope/vim-fugitive" },
+    { "sindrets/diffview.nvim" },
 }

@@ -19,8 +19,8 @@ local on_attach = function(client, bufnr)
         opts.buffer = bufnr
         vim.keymap.set(mode, lhs, rhs, opts)
     end
-    local opts = { noremap=true, silent=true }
-    buf_set_keymap("n", "<space>i",  jdtls.organize_imports, opts)
+    local opts = { noremap = true, silent = true }
+    buf_set_keymap("n", "<space>i", jdtls.organize_imports, opts)
     buf_set_keymap("n", "<space>tc", jdtls.test_class, opts)
     buf_set_keymap("n", "<space>tm", jdtls.test_nearest_method, opts)
     buf_set_keymap(
@@ -40,33 +40,33 @@ local install_dir = '/scratch/install/jdtls/'
 local config_dir = install_dir .. 'config_linux'
 local workspace_dir = '/scratch/data/jdtls/ws/' .. util.get_project_name()
 local config = {
-  -- The command that starts the language server
-  -- See:
-  -- https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
-  cmd = {
+    -- The command that starts the language server
+    -- See:
+    -- https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
+    cmd = {
 
-    'java',
+        'java',
 
-    '-Declipse.application=org.eclipse.jdt.ls.core.id1',
-    '-Dosgi.bundles.defaultStartLevel=4',
-    '-Declipse.product=org.eclipse.jdt.ls.core.product',
-    '-Dlog.protocol=true',
-    -- '-Dlog.level=ALL',
-    '-Xmx1g',
-    '--add-modules=ALL-SYSTEM',
-    '--add-opens', 'java.base/java.util=ALL-UNNAMED',
-    '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+        '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+        '-Dosgi.bundles.defaultStartLevel=4',
+        '-Declipse.product=org.eclipse.jdt.ls.core.product',
+        '-Dlog.protocol=true',
+        -- '-Dlog.level=ALL',
+        '-Xmx1g',
+        '--add-modules=ALL-SYSTEM',
+        '--add-opens', 'java.base/java.util=ALL-UNNAMED',
+        '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
 
-    '-jar',
-    vim.fn.glob(
-        install_dir .. "/plugins/org.eclipse.equinox.launcher_*.jar", true),
+        '-jar',
+        vim.fn.glob(
+            install_dir .. "/plugins/org.eclipse.equinox.launcher_*.jar", true),
 
-    '-configuration', config_dir,
+        '-configuration', config_dir,
 
-    '-data', workspace_dir
-  },
+        '-data', workspace_dir
+    },
 
-  root_dir = util.get_root(),
+    root_dir = util.get_root(),
 }
 
 -- Here you can configure eclipse.jdt.ls specific settings
@@ -78,7 +78,7 @@ config.settings = {
             toString = {
                 template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}"
             }
-        };
+        },
         completion = {
             favoriteStaticMembers = {
                 "org.hamcrest.MatcherAssert.assertThat",
@@ -98,7 +98,7 @@ config.settings = {
                 "org",
                 "com",
             },
-        };
+        },
         configuration = {
             runtimes = {
                 {
@@ -110,7 +110,7 @@ config.settings = {
                     path = "/scratch/install/jdk17",
                 },
             }
-        };
+        },
         contentProvider = { preferred = "fernflower" },
         eclipse = {
             downloadSources = true,
@@ -139,11 +139,11 @@ config.settings = {
         },
         sources = {
             organizeImports = {
-                starThreshold = 9999;
-                staticStarThreshold = 9999;
-            };
-        };
-        signatureHelp = { enabled = true };
+                starThreshold = 9999,
+                staticStarThreshold = 9999,
+            },
+        },
+        signatureHelp = { enabled = true },
     }
 }
 
@@ -159,4 +159,5 @@ function M.setup()
         end,
     })
 end
+
 return M

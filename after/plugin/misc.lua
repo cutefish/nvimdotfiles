@@ -6,8 +6,8 @@ require('lualine').setup {
     options = {
         icons_enabled = true,
         theme = 'moonfly',
-        component_separators = { left = '', right = ''},
-        section_separators = { left = '', right = ''},
+        component_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
         disabled_filetypes = {
             statusline = {},
             winbar = {},
@@ -22,8 +22,8 @@ require('lualine').setup {
         }
     },
     sections = {
-        lualine_a = {'mode', },
-        lualine_b = {'branch', 'diff', 'filename'},
+        lualine_a = { 'mode', },
+        lualine_b = { 'branch', 'diff', 'filename' },
         lualine_c = {
             function()
                 if #vim.lsp.buf_get_clients() == 0 then
@@ -36,15 +36,15 @@ require('lualine').setup {
                 return status
             end,
         },
-        lualine_x = {'encoding', 'filetype'},
-        lualine_y = {'progress', 'selectioncount'},
-        lualine_z = {'location'}
+        lualine_x = { 'encoding', 'filetype' },
+        lualine_y = { 'progress', 'selectioncount' },
+        lualine_z = { 'location' }
     },
     inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = {'filename'},
-        lualine_x = {'location'},
+        lualine_c = { 'filename' },
+        lualine_x = { 'location' },
         lualine_y = {},
         lualine_z = {}
     },

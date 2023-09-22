@@ -69,5 +69,3 @@ local function clear_term()
     vim.opt_local.scrollback = 10000
 end
 vim.keymap.set('t', '<c-l><c-l>', clear_term)
-
-

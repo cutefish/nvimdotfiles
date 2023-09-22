@@ -16,7 +16,7 @@ end
 
 function M.get_root(bufname)
     bufname = bufname or
-    vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
+        vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
     local patterns = config.root_patterns
     local dirname = vim.fn.fnamemodify(bufname, ':p:h')
     local getparent = function(p)

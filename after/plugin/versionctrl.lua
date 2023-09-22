@@ -21,14 +21,14 @@ vim.api.nvim_create_user_command("Gup", function(opts)
     vim.cmd("Git add . ")
     vim.cmd('Git ci -m ' .. (use_default_if_empty(opts.args, "update")))
     vim.cmd('Git push')
-end, { nargs="?" })
+end, { nargs = "?" })
 vim.api.nvim_create_user_command("Gv", function(opts)
     vim.cmd("Gvdiffsplit " .. opts.args)
-end, { nargs="?" })
+end, { nargs = "?" })
 
 --------------------------------------------------------------------------------
 -- Diffview
 --------------------------------------------------------------------------------
 vim.api.nvim_create_user_command("Dv", function(opts)
     vim.cmd("DiffviewOpen " .. (opts.args or ""))
-end, { nargs="?" })
+end, { nargs = "?" })

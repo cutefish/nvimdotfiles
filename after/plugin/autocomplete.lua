@@ -15,7 +15,7 @@ local safe_enter = function(fallback)
     -- If nothing is selected (including preselections) add a newline as usual.
     -- If something has explicitly been selected by the user, select it.
     if cmp.visible() and cmp.get_active_entry() then
-        cmp.confirm({behavior = cmp.ConfirmBehavior.Replace, select = false })
+        cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
     else
         fallback()
     end
@@ -114,8 +114,7 @@ cmp.setup.cmdline(':', {
 --------------------------------------------------------------------------------
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 cmp.event:on(
-  'confirm_done',
-  cmp_autopairs.on_confirm_done()
+    'confirm_done',
+    cmp_autopairs.on_confirm_done()
 )
-require('nvim-autopairs').setup({ })
-
+require('nvim-autopairs').setup({})
