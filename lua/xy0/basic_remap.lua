@@ -25,7 +25,7 @@ vim.keymap.set("n", "<c-j>", "<c-w>j")
 vim.keymap.set("n", "<c-k>", "<c-w>k")
 vim.keymap.set("n", "<c-l>", "<c-w>l")
 vim.keymap.set("t", "<a-h>", "<c-\\><c-N>:tabprev<CR>")
-vim.keymap.set("t", "<a-j>", "<c-\\><c-N>:tabnext<CR>")
+vim.keymap.set("t", "<a-l>", "<c-\\><c-N>:tabnext<CR>")
 vim.keymap.set("n", "<a-h>", ":tabprev<CR>")
 vim.keymap.set("n", "<a-l>", ":tabnext<CR>")
 
