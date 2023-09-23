@@ -76,7 +76,9 @@ config.settings = {
     java = {
         codeGeneration = {
             toString = {
-                template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}"
+                template =
+                    '${object.className}{${member.name()}' ..
+                    '=${member.value}, ${otherMembers}}'
             }
         },
         completion = {
@@ -114,6 +116,9 @@ config.settings = {
         contentProvider = { preferred = "fernflower" },
         eclipse = {
             downloadSources = true,
+        },
+        format = {
+            settings = { url = '/scratch/data/eclipse-style.xml' }
         },
         flags = {
             allow_incremental_sync = false,
