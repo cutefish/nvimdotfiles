@@ -10,6 +10,9 @@ vim.g.mapleader = ","
 vim.wo.number = true
 vim.wo.relativenumber = true
 
+-- text width
+vim.opt.textwidth = 80
+
 -- clipboard
 vim.opt.clipboard = "unnamedplus"
 
