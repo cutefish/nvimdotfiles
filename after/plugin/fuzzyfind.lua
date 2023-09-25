@@ -11,7 +11,7 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fc', builtin.git_commits, {})
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set(
-    'n', '<leader>F',
+    'n', '<leader>fF',
     function() builtin.find_files({ no_ignore = true }) end, {})
 vim.keymap.set('n', '<leader>fp', builtin.resume, {})
 vim.keymap.set('n', '<leader>fm', builtin.man_pages, {})

@@ -118,7 +118,10 @@ config.settings = {
             downloadSources = true,
         },
         format = {
-            settings = { url = '/scratch/data/eclipse-style.xml' }
+            settings = {
+                url = '/scratch/data/jdtls/eclipse-style.xml',
+                profile = 'GoogleStyle'
+            }
         },
         flags = {
             allow_incremental_sync = false,
@@ -129,6 +132,9 @@ config.settings = {
         },
         inlayHints = {
             parameterNames = { enabled = "literals" },
+        },
+        import = {
+            gradle = { enabled = false },
         },
         maven = {
             downloadSources = true,
