@@ -120,7 +120,7 @@ config.settings = {
         format = {
             settings = {
                 url = '/scratch/data/jdtls/eclipse-style.xml',
-                profile = 'GoogleStyle'
+                profile = 'KV'
             }
         },
         flags = {
