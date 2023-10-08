@@ -32,5 +32,8 @@ vim.opt.guicursor = "a:blinkwait1-blinkon100"
 -- disable mouse
 vim.opt.mouse = ""
 
+-- smart indent
+vim.opt.smartindent = true
+
 -- enable lsp logging for debugging
 -- vim.lsp.set_log_level('debug')
