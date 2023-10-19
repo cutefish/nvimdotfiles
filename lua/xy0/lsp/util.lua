@@ -24,8 +24,14 @@ function M.on_attach(bufnr)
         'n', '<space>rn', vim.lsp.buf.rename, opts)
     buf_set_keymap('n', 'gD', vim.lsp.buf.declaration, opts)
     buf_set_keymap('n', 'gd', telescope_builtin.lsp_definitions, opts)
-    buf_set_keymap('n', 'gr', telescope_builtin.lsp_references, opts)
-    buf_set_keymap('n', 'gi', telescope_builtin.lsp_implementations, opts)
+    buf_set_keymap('n', 'gr',
+        function() telescope_builtin.lsp_references({ show_line = false })
+        end,
+        opts)
+    buf_set_keymap('n', 'gi',
+        function() telescope_builtin.lsp_implementations({ show_line = false })
+        end,
+        opts)
     buf_set_keymap('n', 'gt', telescope_builtin.lsp_type_definitions, opts)
     buf_set_keymap('n', 'K', vim.lsp.buf.hover, opts)
     --buf_set_keymap('n', 'gs', vim.lsp.buf.signature_help, opts)

@@ -19,7 +19,15 @@ vim.keymap.set('n', '<leader>f/', builtin.search_history, {})
 
 telescope.setup {
     defaults = {
-        path_display = { "smart" },
+        path_display = function(_, path)
+            local utils = require('telescope.utils')
+            local bufname_tail = utils.path_tail(path)
+            local path_without_tail = require('plenary.strings').truncate(path, #path - #bufname_tail, '')
+            local path_to_display = utils.transform_path({
+                path_display = { 'truncate' },
+            }, path_without_tail)
+            return string.format("%s (%s)", bufname_tail, path_to_display)
+        end,
         mappings = {
             i = {
                 ["<c-s>"] = actions.select_all,
