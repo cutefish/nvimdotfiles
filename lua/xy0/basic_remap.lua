@@ -74,11 +74,23 @@ end
 vim.keymap.set('t', '<c-l><c-l>', clear_term)
 
 -- Pretty-print the current line as json to a new anonymous window
-local function pretty_print_json()
-    local current_line = vim.api.nvim_get_current_line()
+local function get_visual_selection()
+    local s_start = vim.fn.getpos("v")
+    local s_end = vim.fn.getpos(".")
+    local n_lines = math.abs(s_end[2] - s_start[2]) + 1
+    local lines = vim.api.nvim_buf_get_lines(0, s_start[2] - 1, s_end[2], false)
+    lines[1] = string.sub(lines[1], s_start[3], -1)
+    if n_lines == 1 then
+        lines[n_lines] = string.sub(lines[n_lines], 1, s_end[3] - s_start[3] + 1)
+    else
+        lines[n_lines] = string.sub(lines[n_lines], 1, s_end[3])
+    end
+    return table.concat(lines, '\n')
+end
+local function pretty_print_json_text(text)
     local command = "python3 -m json.tool"
     local bufnr = vim.api.nvim_create_buf(false, true)
-    local writebuf = function(channel, data, name)
+    local writebuf = function(_, data, _)
         for i, line in ipairs(data) do
             vim.api.nvim_buf_set_lines(bufnr, i, i, false, { line })
         end
@@ -90,17 +102,26 @@ local function pretty_print_json()
         stderr_buffered = true,
         on_stdout = writebuf,
         on_stderr = writebuf,
-        on_exit = function(channel, code, name)
+        on_exit = function(_, code, _)
             if (code ~= 0) then
                 print('Exiting with code ' .. code)
             end
         end,
     })
 
-    vim.fn.chansend(job, current_line)
+    vim.fn.chansend(job, text)
     vim.fn.chanclose(job, 'stdin')
     vim.fn.jobwait({ job }, 1000)
     vim.cmd('vsp')
     vim.api.nvim_win_set_buf(0, bufnr)
 end
-vim.api.nvim_create_user_command("Pj", pretty_print_json, {})
+vim.keymap.set("n", "<leader>pj", function()
+    local text = vim.api.nvim_get_current_line()
+    print(text)
+    pretty_print_json_text(text)
+end)
+vim.keymap.set("v", "<leader>pj", function()
+    local text = get_visual_selection()
+    print(text)
+    pretty_print_json_text(text)
+end)
