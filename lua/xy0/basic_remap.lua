@@ -55,10 +55,13 @@ vim.keymap.set("n", "<leader>t0", "10gt")
 -- Move visual block
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
 -- New line in normal
 vim.keymap.set("n", "<leader>r", "<Insert><cr><esc>")
+
 -- Delete the buffer without losing split
 vim.api.nvim_create_user_command("Bd", "b#|bd#", {})
+
 -- Clear terminal as well as scrollback
 local function clear_term()
     vim.opt_local.scrollback = 1
@@ -69,3 +72,35 @@ local function clear_term()
     vim.opt_local.scrollback = 10000
 end
 vim.keymap.set('t', '<c-l><c-l>', clear_term)
+
+-- Pretty-print the current line as json to a new anonymous window
+local function pretty_print_json()
+    local current_line = vim.api.nvim_get_current_line()
+    local command = "python3 -m json.tool"
+    local bufnr = vim.api.nvim_create_buf(false, true)
+    local writebuf = function(channel, data, name)
+        for i, line in ipairs(data) do
+            vim.api.nvim_buf_set_lines(bufnr, i, i, false, { line })
+        end
+    end
+
+    -- create a job to run the command
+    job = vim.fn.jobstart(command, {
+        stdout_buffered = true,
+        stderr_buffered = true,
+        on_stdout = writebuf,
+        on_stderr = writebuf,
+        on_exit = function(channel, code, name)
+            if (code ~= 0) then
+                print('Exiting with code ' .. code)
+            end
+        end,
+    })
+
+    vim.fn.chansend(job, current_line)
+    vim.fn.chanclose(job, 'stdin')
+    vim.fn.jobwait({ job }, 1000)
+    vim.cmd('vsp')
+    vim.api.nvim_win_set_buf(0, bufnr)
+end
+vim.api.nvim_create_user_command("Pj", pretty_print_json, {})
