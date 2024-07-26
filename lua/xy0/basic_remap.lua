@@ -125,3 +125,11 @@ vim.keymap.set("v", "<leader>pj", function()
     print(text)
     pretty_print_json_text(text)
 end)
+
+-- Copy the file name to the clipboard
+vim.keymap.set("n", "<leader>yp", function()
+    vim.fn.setreg('+', vim.fs.basename(vim.fn.expand('%p')))
+end)
+vim.keymap.set("n", "<leader>yfp", function()
+    vim.fn.setreg('+', vim.fn.expand('%:p'))
+end)
