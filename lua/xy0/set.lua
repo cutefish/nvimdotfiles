@@ -37,3 +37,4 @@ vim.opt.smartindent = true
 
 -- enable lsp logging for debugging
 -- vim.lsp.set_log_level('debug')
+

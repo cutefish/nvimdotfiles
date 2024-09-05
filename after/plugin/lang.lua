@@ -18,3 +18,5 @@ vim.g["pandoc#syntax#conceal#blacklist"] = {
     -- "inlinecode",
     "inlinemath",
 }
+
+vim.g["pandoc#toc#close_after_navigating"] = 0
