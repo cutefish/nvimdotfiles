@@ -26,7 +26,7 @@ require('lualine').setup {
         lualine_b = { 'branch', 'diff', 'filename' },
         lualine_c = {
             function()
-                if #vim.lsp.buf_get_clients() == 0 then
+                if #vim.lsp.get_clients() == 0 then
                     return ''
                 end
 
