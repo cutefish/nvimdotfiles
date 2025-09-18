@@ -10,6 +10,21 @@ vim.g.mapleader = ","
 vim.wo.number = true
 vim.wo.relativenumber = true
 
+--- It seems for terminal buffers, we need to override the default setting again.
+--- Create an autocommand group to organize our terminal settings
+local term_group = vim.api.nvim_create_augroup('MyTermSettings', { clear = true })
+
+--- Create the autocommand
+vim.api.nvim_create_autocmd('TermOpen', {
+  group = term_group,
+  pattern = '*',
+  callback = function()
+    -- Set options locally for the terminal buffer window
+    vim.wo.number = true
+    vim.wo.relativenumber = true
+  end,
+})
+
 -- clipboard
 vim.opt.clipboard = "unnamedplus"
 
