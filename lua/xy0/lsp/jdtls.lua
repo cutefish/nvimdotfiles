@@ -111,6 +111,11 @@ config.settings = {
                     name = "JavaSE-17",
                     path = "/scratch/install/jdk17",
                 },
+                {
+                    name = "JavaSE-21",
+                    path = "/scratch/install/jdk21",
+                    default = true,
+                },
             }
         },
         contentProvider = { preferred = "fernflower" },
