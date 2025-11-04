@@ -20,6 +20,7 @@ local on_attach = function(client, bufnr)
         vim.keymap.set(mode, lhs, rhs, opts)
     end
     local opts = { noremap = true, silent = true }
+    buf_set_keymap("n", "gl", vim.diagnostic.open_float, opts)
     buf_set_keymap("n", "<space>i", jdtls.organize_imports, opts)
     buf_set_keymap("n", "<space>tc", jdtls.test_class, opts)
     buf_set_keymap("n", "<space>tm", jdtls.test_nearest_method, opts)
